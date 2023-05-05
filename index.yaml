@@ -1,5 +1,18 @@
 apiVersion: v1
 entries:
+  flask-lang-detect:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-05-05T12:18:03.991255905Z"
+    description: A simple Flask application for language detection
+    digest: 89d17d76e0ac093cd8de87daa1b79fa33b0d87ee814f11fe25c5de18dad3b1d8
+    maintainers:
+    - name: korvoj
+    name: flask-lang-detect
+    type: application
+    urls:
+    - https://github.com/korvoj/charts/releases/download/flask-lang-detect-1.0.4/flask-lang-detect-1.0.4.tgz
+    version: 1.0.4
   plumber-rstudio:
   - apiVersion: v2
     appVersion: v1.2.0
@@ -13,4 +26,4 @@ entries:
     urls:
     - https://github.com/korvoj/charts/releases/download/plumber-rstudio-1.0.1/plumber-rstudio-1.0.1.tgz
     version: 1.0.1
-generated: "2023-05-05T12:11:53.951369216Z"
+generated: "2023-05-05T12:18:03.991260005Z"

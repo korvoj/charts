@@ -1,0 +1,8 @@
+apiVersion: v2
+appVersion: latest
+description: A simple Flask application for language detection
+name: flask-lang-detect
+type: application
+version: 1.0.4
+maintainers:
+  - name: korvoj

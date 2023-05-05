@@ -13,6 +13,19 @@ entries:
     urls:
     - https://github.com/korvoj/charts/releases/download/flask-lang-detect-1.0.4/flask-lang-detect-1.0.4.tgz
     version: 1.0.4
+  owntracks-recorder:
+  - apiVersion: v2
+    appVersion: 0.9.3
+    created: "2023-05-05T12:23:53.97289434Z"
+    description: A Helm chart for OwnTracks Recorder
+    digest: 483b1e56a791a5000b2128e3465adc72550188de9a808e037e8d2e8c30e41663
+    maintainers:
+    - name: korvoj
+    name: owntracks-recorder
+    type: application
+    urls:
+    - https://github.com/korvoj/charts/releases/download/owntracks-recorder-1.0.5/owntracks-recorder-1.0.5.tgz
+    version: 1.0.5
   plumber-rstudio:
   - apiVersion: v2
     appVersion: v1.2.0
@@ -26,4 +39,4 @@ entries:
     urls:
     - https://github.com/korvoj/charts/releases/download/plumber-rstudio-1.0.1/plumber-rstudio-1.0.1.tgz
     version: 1.0.1
-generated: "2023-05-05T12:18:03.991260005Z"
+generated: "2023-05-05T12:23:53.97290024Z"

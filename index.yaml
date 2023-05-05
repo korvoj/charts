@@ -1,0 +1,16 @@
+apiVersion: v1
+entries:
+  plumber-rstudio:
+  - apiVersion: v2
+    appVersion: v1.2.0
+    created: "2023-05-05T12:11:53.951356516Z"
+    description: A Helm chart for Plumber RStudio
+    digest: c6b1563c0ce83a9f9e0bf942421ec4a1a88fe163b64037c57da64fd58d8ee9ac
+    maintainers:
+    - name: korvoj
+    name: plumber-rstudio
+    type: application
+    urls:
+    - https://github.com/korvoj/charts/releases/download/plumber-rstudio-1.0.1/plumber-rstudio-1.0.1.tgz
+    version: 1.0.1
+generated: "2023-05-05T12:11:53.951369216Z"

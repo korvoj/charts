@@ -95,6 +95,6 @@ persistence:
 
 env:
   - name: OTR_HTTPPREFIX
-    value:  ''
+    value: ''
   - name: OTR_GEOKEY
     value: ''

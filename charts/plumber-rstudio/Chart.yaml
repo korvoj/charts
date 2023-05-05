@@ -4,3 +4,5 @@ description: A Helm chart for Plumber RStudio
 type: application
 version: 1.0.1
 appVersion: "v1.2.0"
+maintainers:
+  - name: korvoj

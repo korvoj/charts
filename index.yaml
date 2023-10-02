@@ -66,6 +66,19 @@ entries:
   whatlang-wasm:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-10-02T13:56:07.528409657Z"
+    description: A Helm chart for a very simple language detection application
+    digest: b2f52180445e4121e66ef77731c867689bc6e72b314cefb4ef36bdfd3402bd6d
+    maintainers:
+    - email: korvoj@users.noreply.github.com
+      name: korvoj
+    name: whatlang-wasm
+    type: application
+    urls:
+    - https://github.com/korvoj/charts/releases/download/whatlang-wasm-0.1.1/whatlang-wasm-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-10-02T13:49:54.73862708Z"
     description: A Helm chart for a very simple language detection application
     digest: 807cc88e2942beec991481980e31e97491f99507f6b8e51e16610e79717ade26
@@ -77,4 +90,4 @@ entries:
     urls:
     - https://github.com/korvoj/charts/releases/download/whatlang-wasm-0.1.0/whatlang-wasm-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-02T13:49:54.738800182Z"
+generated: "2023-10-02T13:56:07.528428157Z"

@@ -1,0 +1,9 @@
+apiVersion: v2
+name: usermanager-wasm
+description: A Helm chart for a very simple language detection application
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+maintainers:
+- email: korvoj@users.noreply.github.com
+  name: korvoj

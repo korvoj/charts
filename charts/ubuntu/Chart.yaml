@@ -1,0 +1,19 @@
+annotations:
+  artifacthub.io/changes: |
+    - kind: fixed
+      description: Fix startup probe
+apiVersion: v2
+appVersion: "22.04"
+description: Ubuntu pod for testing or debugging
+home: https://github.com/SimonMisencik/helm-charts
+icon: https://cdn-icons-png.flaticon.com/512/81/81270.png
+keywords:
+- ubuntu
+- debug
+maintainers:
+- email: simon.misencik@gmail.com
+  name: SimonMisencik
+name: ubuntu
+sources:
+- https://github.com/SimonMisencik/helm-charts
+version: 1.2.1

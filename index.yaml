@@ -63,6 +63,20 @@ entries:
     urls:
     - https://github.com/korvoj/charts/releases/download/ubuntu-1.2.1/ubuntu-1.2.1.tgz
     version: 1.2.1
+  usermanager:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-10-03T10:41:44.870984199Z"
+    description: A Helm chart for a demo user-management application
+    digest: a30569f38598e2cda2cd51834560e05b52e3c00af7b325c4db329aa554cde550
+    maintainers:
+    - email: korvoj@users.noreply.github.com
+      name: korvoj
+    name: usermanager
+    type: application
+    urls:
+    - https://github.com/korvoj/charts/releases/download/usermanager-0.1.0/usermanager-0.1.0.tgz
+    version: 0.1.0
   usermanager-wasm:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -131,4 +145,4 @@ entries:
     urls:
     - https://github.com/korvoj/charts/releases/download/whatlang-wasm-0.1.0/whatlang-wasm-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-03T10:38:59.407635407Z"
+generated: "2023-10-03T10:41:44.870998199Z"

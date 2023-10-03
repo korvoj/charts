@@ -1,0 +1,9 @@
+apiVersion: v2
+name: whatlang
+description: A Helm chart for a simple language detection web service
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+maintainers:
+- email: korvoj@users.noreply.github.com
+  name: korvoj

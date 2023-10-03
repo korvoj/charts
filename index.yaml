@@ -80,6 +80,19 @@ entries:
   whatlang:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-10-03T10:38:59.407619707Z"
+    description: A Helm chart for a simple language detection web service
+    digest: 4ec29cc3abf0e6277d1b815fc46ea3a6a6cbdd92b6f39581ca17ed95dabfecac
+    maintainers:
+    - email: korvoj@users.noreply.github.com
+      name: korvoj
+    name: whatlang
+    type: application
+    urls:
+    - https://github.com/korvoj/charts/releases/download/whatlang-0.1.1/whatlang-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-10-03T09:29:16.932397358Z"
     description: A Helm chart for a simple language detection web service
     digest: 3165405c530587ab0c721602c3ddbc8dc1adef1ca40cfadc4985324a571f97e4
@@ -118,4 +131,4 @@ entries:
     urls:
     - https://github.com/korvoj/charts/releases/download/whatlang-wasm-0.1.0/whatlang-wasm-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-03T09:29:16.932407758Z"
+generated: "2023-10-03T10:38:59.407635407Z"

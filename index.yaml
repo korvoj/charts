@@ -46,6 +46,29 @@ entries:
           description: Fix startup probe
     apiVersion: v2
     appVersion: "22.04"
+    created: "2023-10-04T11:01:33.239248911Z"
+    description: Ubuntu pod for testing or debugging
+    digest: 16b65511cf122db288938506ebae9bf85bd6d4d21eb559f7248c7ca2f08527f3
+    home: https://github.com/SimonMisencik/helm-charts
+    icon: https://cdn-icons-png.flaticon.com/512/81/81270.png
+    keywords:
+    - ubuntu
+    - debug
+    maintainers:
+    - email: simon.misencik@gmail.com
+      name: SimonMisencik
+    name: ubuntu
+    sources:
+    - https://github.com/SimonMisencik/helm-charts
+    urls:
+    - https://github.com/korvoj/charts/releases/download/ubuntu-1.2.2/ubuntu-1.2.2.tgz
+    version: 1.2.2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: Fix startup probe
+    apiVersion: v2
+    appVersion: "22.04"
     created: "2023-10-02T11:03:25.216906216Z"
     description: Ubuntu pod for testing or debugging
     digest: 2717d1c4e8f2b8911bab6b6adb9eef4f246da71be05c1f7da2f90449d0488e84
@@ -145,4 +168,4 @@ entries:
     urls:
     - https://github.com/korvoj/charts/releases/download/whatlang-wasm-0.1.0/whatlang-wasm-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-03T10:41:44.870998199Z"
+generated: "2023-10-04T11:01:33.239463312Z"

@@ -16,4 +16,4 @@ maintainers:
 name: ubuntu
 sources:
 - https://github.com/SimonMisencik/helm-charts
-version: 2.0.0
+version: 2.0.1

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-ubuntu
+  labels:
+    app: ubuntu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+    spec:
+      containers:
+        - name: ubuntu
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          args:
+            - sh
+            - -c
+            - touch /tmp/healthy > STATUS && sleep 365d
+          imagePullPolicy: IfNotPresent
+          startupProbe:
+            exec:
+              command:
+              - cat
+              - {{  .Values.startupProbeFile }}
+            failureThreshold: 100
+            periodSeconds: 2
+      restartPolicy: Always

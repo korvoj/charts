@@ -17,7 +17,7 @@ spec:
         exec:
           command:
           - cat
-          - /tmp/healthy
-        failureThreshold: 500
+          - /tmp/healthyNOT
+        failureThreshold: 100
         periodSeconds: 2
   restartPolicy: Always

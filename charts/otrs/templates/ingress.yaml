@@ -18,8 +18,13 @@ metadata:
   name: {{ $fullName }}
   labels:
     {{- include "otrs.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
+  {{- if or (.Values.ingress.annotations) (eq .Values.ingress.className "traefik")}}
   annotations:
+  {{- end }}
+  {{- if eq .Values.ingress.className "traefik" }}
+    traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-{{ $fullName }}@kubernetescrd
+  {{- end }}
+  {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:

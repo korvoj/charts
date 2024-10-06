@@ -16,6 +16,18 @@ entries:
   otrs:
   - apiVersion: v2
     appVersion: 6.0.39
+    created: "2024-10-06T13:29:25.207734353Z"
+    description: A Helm chart for deploying OTRS (Znuny).
+    digest: c6b7e2cd929b3102b2820e1466c93d78cab94fb4dcaff78c28bdeb2f3298bd73
+    name: otrs
+    sources:
+    - https://github.com/juanluisbaptiste/docker-otrs
+    type: application
+    urls:
+    - https://github.com/korvoj/charts/releases/download/otrs-2.0.1/otrs-2.0.1.tgz
+    version: 2.0.1
+  - apiVersion: v2
+    appVersion: 6.0.39
     created: "2024-10-06T12:56:03.803847532Z"
     description: A Helm chart for deploying OTRS (Znuny).
     digest: e53ca725e9cc3e31016fcb6068a4d3422c3a4b226a9f0ff7522f3ab675f4bcbc
@@ -227,4 +239,4 @@ entries:
     urls:
     - https://github.com/korvoj/charts/releases/download/whatlang-wasm-0.1.0/whatlang-wasm-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-06T12:56:03.803868381Z"
+generated: "2024-10-06T13:29:25.2077593Z"

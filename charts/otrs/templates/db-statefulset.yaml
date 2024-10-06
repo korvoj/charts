@@ -1,0 +1,75 @@
+{{- if .Values.mariadb.enabled }}
+{{- $kubeVersion := .Capabilities.KubeVersion.GitVersion -}}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "otrs.fullname" . }}-mariadb
+  labels:
+    {{- include "otrs.mariadb.labels" . | nindent 4 }}
+spec:
+  serviceName: ""
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "otrs.mariadb.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "otrs.mariadb.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-mariadb
+          image: "{{ .Values.mariadb.image.repository }}:{{ .Values.mariadb.image.tag }}"
+          imagePullPolicy: {{ .Values.mariadb.image.pullPolicy }}
+          ports:
+            - name: mariadb
+              containerPort: 3306
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.mariadb.resources | nindent 12 }}
+          volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: {{ .Values.mariadb.persistence.existingClaim | default ( printf "%s-mariadb" (include "otrs.fullname" .)) | quote }}
+          {{- if .Values.mariadb.readinessProbe.enabled }}
+          readinessProbe:
+{{ toYaml .Values.mariadb.readinessProbe.spec | indent 12}}
+          {{- end }}
+          {{- if .Values.mariadb.livenessProbe.enabled }}
+          livenessProbe:
+{{ toYaml .Values.mariadb.livenessProbe.spec | indent 12}}
+          {{- end }}
+          {{- if and (semverCompare ">=1.19-0" $kubeVersion) (.Values.mariadb.startupProbe.enabled)}}
+          startupProbe:
+{{ toYaml .Values.mariadb.startupProbe.spec | indent 12}}
+          {{- end }}
+
+  {{- if .Values.mariadb.persistence.enabled }}
+      volumes:
+  {{- if .Values.mariadb.persistence.existingClaim }}
+        - name: {{ .Values.mariadb.persistence.existingClaim | quote }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.mariadb.persistence.existingClaim | quote }}
+  {{- else }}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ include "otrs.fullname" . }}-mariadb
+      spec:
+        accessModes: 
+          - {{ .Values.mariadb.persistence.accessMode | quote }}
+        resources:
+          requests:
+            storage: {{ .Values.mariadb.persistence.size | quote }}
+        {{- if and (.Values.mariadb.persistence.storageClass) (ne "-" .Values.mariadb.persistence.storageClass) }}
+        storageClassName: "{{ .Values.mariadb.persistence.storageClass }}"
+        {{- end }}
+  {{- end }}
+  {{- else }}
+      volumes:
+        - name: {{ include "otrs.fullname" . }}-mariadb
+          emptyDir: {}
+  {{- end }}
+{{- end }}

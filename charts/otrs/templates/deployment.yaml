@@ -1,0 +1,121 @@
+{{- $kubeVersion := .Capabilities.KubeVersion.GitVersion -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "otrs.fullname" . }}
+  labels:
+    {{- include "otrs.labels" . | nindent 4 }}
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      {{- include "otrs.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "otrs.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "otrs.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        {{- if .Values.properties.plugins.itsm }}
+        - name: download-itsm
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              if [ ! -f "/opt/otrs/addons/installed/ITSM-6.0.31.opm" ]; then
+                wget -O /opt/otrs/addons/ITSM-6.0.31.opm https://resources.mrezhi.net/file/mrezhi-public/geant/otrs/ITSM-6.0.31.opm
+              fi
+          volumeMounts:
+            - name: otrs-data
+              mountPath: /opt/otrs/addons
+              subPath: addons
+        {{- end }}
+        {{- if .Values.properties.plugins.faq }}
+        - name: download-faq
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              if [ ! -f "/opt/otrs/addons/installed/FAQ-6.0.33.opm" ]; then
+                wget -O /opt/otrs/addons/FAQ-6.0.33.opm https://resources.mrezhi.net/file/mrezhi-public/geant/otrs/FAQ-6.0.33.opm
+              fi
+          volumeMounts:
+            - name: otrs-data
+              mountPath: /opt/otrs/addons
+              subPath: addons
+        {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: "{{ include "otrs.fullname" . }}"
+          volumeMounts:
+            - name: otrs-data
+              mountPath: /opt/otrs/Kernel
+              subPath: kernel
+            - name: otrs-data
+              mountPath: /opt/otrs/var/httpd/htdocs/skins
+              subPath: skins
+            - name: otrs-data
+              mountPath: /var/otrs/backups
+              subPath: backups
+            - name: otrs-data
+              mountPath: /opt/otrs/addons
+              subPath: addons
+            - name: otrs-data
+              mountPath: /opt/otrs/db_upgrade
+              subPath: db_upgrade
+          {{- if .Values.readinessProbe.enabled }}
+          readinessProbe:
+{{ toYaml .Values.readinessProbe.spec | indent 12}}
+          {{- end }}
+          {{- if .Values.livenessProbe.enabled }}
+          livenessProbe:
+{{ toYaml .Values.livenessProbe.spec | indent 12}}
+          {{- end }}
+          {{- if and (semverCompare ">=1.19-0" $kubeVersion) (.Values.startupProbe.enabled)}}
+          startupProbe:
+{{ toYaml .Values.startupProbe.spec | indent 12}}
+          {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+      - name: otrs-data
+      {{- if .Values.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.persistence.existingClaim | default (include "otrs.fullname" .) | quote }}
+      {{- else }}
+        emptyDir: {}
+      {{- end }}

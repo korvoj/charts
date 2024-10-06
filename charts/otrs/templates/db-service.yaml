@@ -1,0 +1,17 @@
+{{- if .Values.mariadb.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "otrs.fullname" . }}-mariadb
+  labels:
+    {{- include "otrs.mariadb.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.mariadb.service.type }}
+  ports:
+    - port: {{ .Values.mariadb.service.port }}
+      targetPort: mariadb
+      protocol: TCP
+      name: mariadb
+  selector:
+    {{- include "otrs.mariadb.selectorLabels" . | nindent 4 }}
+{{- end }}

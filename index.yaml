@@ -13,6 +13,19 @@ entries:
     urls:
     - https://github.com/korvoj/charts/releases/download/flask-lang-detect-1.0.4/flask-lang-detect-1.0.4.tgz
     version: 1.0.4
+  otrs:
+  - apiVersion: v2
+    appVersion: 6.0.39
+    created: "2024-10-06T12:56:03.803847532Z"
+    description: A Helm chart for deploying OTRS (Znuny).
+    digest: e53ca725e9cc3e31016fcb6068a4d3422c3a4b226a9f0ff7522f3ab675f4bcbc
+    name: otrs
+    sources:
+    - https://github.com/juanluisbaptiste/docker-otrs
+    type: application
+    urls:
+    - https://github.com/korvoj/charts/releases/download/otrs-2.0.0/otrs-2.0.0.tgz
+    version: 2.0.0
   owntracks-recorder:
   - apiVersion: v2
     appVersion: 0.9.3
@@ -214,4 +227,4 @@ entries:
     urls:
     - https://github.com/korvoj/charts/releases/download/whatlang-wasm-0.1.0/whatlang-wasm-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-04T11:46:11.902975082Z"
+generated: "2024-10-06T12:56:03.803868381Z"

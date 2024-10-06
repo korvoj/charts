@@ -36,7 +36,7 @@ spec:
           args:
             - |
               if [ ! -f "/opt/otrs/addons/installed/ITSM-6.0.31.opm" ]; then
-                wget -O /opt/otrs/addons/ITSM-6.0.31.opm https://resources.mrezhi.net/file/mrezhi-public/geant/nmaas-otrs/ITSM-6.0.31.opm
+                wget -O /opt/otrs/addons/ITSM-6.0.31.opm {{ .Values.properties.plugins.itsmPluginDownloadUrl }}
               fi
           volumeMounts:
             - name: otrs-data
@@ -50,7 +50,7 @@ spec:
           args:
             - |
               if [ ! -f "/opt/otrs/addons/installed/FAQ-6.0.33.opm" ]; then
-                wget -O /opt/otrs/addons/FAQ-6.0.33.opm https://resources.mrezhi.net/file/mrezhi-public/geant/nmaas-otrs/FAQ-6.0.33.opm
+                wget -O /opt/otrs/addons/FAQ-6.0.33.opm {{ .Values.properties.plugins.faqPluginDownloadUrl }}
               fi
           volumeMounts:
             - name: otrs-data

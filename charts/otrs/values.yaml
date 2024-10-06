@@ -115,7 +115,9 @@ startupProbe:
 properties:
   plugins:
     itsm: true
+    itsmPluginDownloadUrl: 'https://static.mrezhi.net/utp/otrs-addons/ITSM-6.0.31.opm'
     faq: true
+    faqPluginDownloadUrl: 'https://static.mrezhi.net/utp/otrs-addons/FAQ-6.0.33.opm'
   # -- no effect if mariadb.enabled is true
   db:
     name: ''

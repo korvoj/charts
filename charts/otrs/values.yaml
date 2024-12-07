@@ -150,11 +150,11 @@ mariadb:
 
   resources:
     limits:
-      cpu: 2000m
-      memory: 3072Mi
+      cpu: 700m
+      memory: 1536Mi
     requests:
       cpu: 100m
-      memory: 1536Mi
+      memory: 512Mi
 
   readinessProbe:
     enabled: true
